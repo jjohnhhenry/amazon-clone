@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  # MongoDB Database (same as production)
+  mongodb:
+    image: mongo:6.0
+    container_name: ecuamazon-mongodb-dev
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: ecuamazon
+    volumes:
+      - mongodb_dev_data:/data/db
+    networks:
+      - ecuamazon-dev-network
+
+  # GraphQL Server (Development mode with hot reload)
+  server:
+    build:
+      context: ./servidor
+      dockerfile: Dockerfile
+    container_name: ecuamazon-server-dev
+    restart: unless-stopped
+    ports:
+      - "4000:4000"
+      - "9229:9229"  # Node.js debugging port
+    environment:
+      - NODE_ENV=development
+      - DB_MONGO=mongodb://admin:password123@mongodb:27017/ecuamazon?authSource=admin
+      - TOKEN_SECRET=development_jwt_secret_key
+      - AWS_ID=${AWS_ID:-your_aws_id}
+      - AWS_SECRET=${AWS_SECRET:-your_aws_secret}
+      - AWS_BUCKET_NAME=${AWS_BUCKET_NAME:-your_bucket}
+      - PORT=4000
+    depends_on:
+      - mongodb
+    volumes:
+      - ./servidor:/app
+      - /app/node_modules
+    networks:
+      - ecuamazon-dev-network
+    command: npm run dev
+
+  # React Client (Development mode with hot reload)
+  client:
+    build:
+      context: ./cliente
+      dockerfile: Dockerfile.dev
+    container_name: ecuamazon-client-dev
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_GRAPHQL_URI=http://localhost:4000/graphql
+      - CHOKIDAR_USEPOLLING=true
+      - FAST_REFRESH=false
+    depends_on:
+      - server
+    volumes:
+      - ./cliente:/app
+      - /app/node_modules
+      - /app/build
+    networks:
+      - ecuamazon-dev-network
+    stdin_open: true
+    tty: true
+    command: npm start
+
+networks:
+  ecuamazon-dev-network:
+    driver: bridge
+
+volumes:
+  mongodb_dev_data:

@@ -137,18 +137,69 @@ clon-amazon/
 
 ## ⚙️ Instalación y Configuración
 
-### Prerrequisitos
-- Node.js v21.5.0 o superior
+### 🐳 **Opción 1: Docker (Recomendado)**
+
+#### Prerrequisitos
+- Docker y Docker Compose instalados
+- Cuenta de AWS con S3 configurado (opcional)
+
+#### Configuración rápida
+```bash
+# 1. Clonar el repositorio
+git clone https://github.com/jjohnhhenry/amazon-clone.git
+cd amazon-clone
+
+# 2. Configurar variables de entorno
+cp .env.example .env
+# Editar .env con tus credenciales AWS (opcional para desarrollo)
+
+# 3. Levantar en modo desarrollo
+docker-compose -f docker-compose.dev.yml up --build
+
+# O para producción
+docker-compose up --build
+```
+
+#### Acceso a la aplicación
+- **Frontend**: http://localhost:3000
+- **Backend GraphQL**: http://localhost:4000/graphql
+- **MongoDB**: localhost:27017
+
+#### Comandos útiles Docker
+```bash
+# Desarrollo con hot reload
+docker-compose -f docker-compose.dev.yml up
+
+# Producción optimizada
+docker-compose up
+
+# Reconstruir containers
+docker-compose up --build
+
+# Ver logs
+docker-compose logs -f
+
+# Parar servicios
+docker-compose down
+
+# Limpiar volúmenes (reset DB)
+docker-compose down -v
+```
+
+### 💻 **Opción 2: Instalación Local**
+
+#### Prerrequisitos
+- Node.js v18.0.0 o superior
 - MongoDB instalado y ejecutándose
 - Cuenta de AWS con S3 configurado
 
-### 1. Clonar el repositorio
+#### 1. Clonar el repositorio
 ```bash
 git clone https://github.com/jjohnhhenry/amazon-clone.git
 cd amazon-clone
 ```
 
-### 2. Configurar el Backend
+#### 2. Configurar el Backend
 ```bash
 cd servidor
 npm install
@@ -166,13 +217,13 @@ AWS_SECRET=tu_aws_secret_key
 AWS_BUCKET_NAME=tu-bucket-s3
 ```
 
-### 3. Configurar el Frontend
+#### 3. Configurar el Frontend
 ```bash
 cd ../cliente
 npm install
 ```
 
-### 4. Iniciar los servicios
+#### 4. Iniciar los servicios
 
 **Terminal 1 - Backend:**
 ```bash
@@ -285,20 +336,80 @@ cd servidor
 npm test
 ```
 
+## 🐳 Arquitectura Docker
+
+### Servicios Containerizados
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   React Client  │    │  GraphQL Server │    │     MongoDB     │
+│   (Port 3000)   │◄──►│   (Port 4000)   │◄──►│   (Port 27017)  │
+│                 │    │                 │    │                 │
+│  - Hot Reload   │    │  - API GraphQL  │    │  - Data Persist │
+│  - Material-UI  │    │  - JWT Auth     │    │  - Volume Mount │
+│  - React Router │    │  - AWS S3       │    │  - Auto Index   │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+          │                       │                       │
+          └───────────────────────┼───────────────────────┘
+                                  │
+                    ┌─────────────────┐
+                    │  Docker Network │
+                    │ ecuamazon-net   │
+                    └─────────────────┘
+```
+
+### Características Docker
+
+- **🔄 Hot Reload**: Cambios en código se reflejan automáticamente
+- **📦 Multi-stage builds**: Optimización para producción
+- **🔒 Security**: Usuarios no-root, health checks
+- **🌐 Networks**: Comunicación segura entre containers
+- **💾 Volumes**: Persistencia de datos MongoDB
+- **⚡ Development/Production**: Configuraciones separadas
+
+### Variables de Entorno
+
+```bash
+# .env para Docker
+AWS_ID=tu_aws_access_key_id
+AWS_SECRET=tu_aws_secret_access_key
+AWS_BUCKET_NAME=tu_bucket_s3
+JWT_SECRET=tu_jwt_secret_muy_seguro
+```
+
 ## 🚀 Deployment
 
-### Frontend (Netlify/Vercel)
+### 🐳 **Opción 1: Docker Production**
+```bash
+# Build optimizado para producción
+docker-compose up --build
+
+# Con Nginx reverse proxy
+docker-compose --profile production up
+```
+
+### ☁️ **Opción 2: Cloud Platforms**
+
+**Frontend (Netlify/Vercel)**
 ```bash
 cd cliente
 npm run build
 # Subir carpeta build/ a tu servicio de hosting
 ```
 
-### Backend (Heroku/Railway)
+**Backend (Railway/DigitalOcean)**
 ```bash
-cd servidor
-# Configurar variables de entorno en el servicio
-# Deployear según la plataforma elegida
+# Usar Dockerfile del servidor
+# Configurar variables de entorno en la plataforma
+```
+
+**Full Stack (Docker Cloud)**
+```bash
+# Deploy con docker-compose en:
+# - Railway
+# - DigitalOcean Apps
+# - AWS ECS
+# - Google Cloud Run
 ```
 
 ## 🤝 Contribuir
