@@ -1,0 +1,346 @@
+/* Amazon Seller Dashboard - Product Information */
+.section--dashboard--seller {
+    margin: 0 2rem;
+    display: flex;
+    gap: 1.5rem;
+    background-color: #EAEDED;
+    min-height: calc(100vh - 160px);
+    padding: 1rem 0;
+}
+
+.row--title--dashboard {
+    width: 100%;
+    margin: 1.5rem 0;
+    text-align: left;
+    padding: 0 2rem;
+    background: #FFFFFF;
+    border-bottom: 1px solid #D5D9D9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+}
+
+.row--title--dashboard h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0F1111;
+    margin: 1.5rem 0;
+    font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+.section--panel--seller {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    background: #FFFFFF;
+    border: 1px solid #D5D9D9;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.13);
+}
+
+.dash--section--product--details {
+    width: 100%;
+}
+
+.product--details-section-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input--product--details--information {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+    align-items: flex-start;
+}
+
+.label--upload--product--details--information {
+    width: 200px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 0.5rem;
+    font-weight: 700;
+    color: #0F1111;
+    font-size: 0.875rem;
+}
+
+.input--upload--product--details--information {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input--dash--product--details--information {
+    width: 100%;
+    border: 1px solid #D5D9D9;
+    border-radius: 8px;
+    height: 2.5rem;
+    padding: 0.5rem 0.75rem;
+    box-sizing: border-box;
+    outline: none;
+    background: #FFFFFF;
+    font-size: 0.875rem;
+    color: #0F1111;
+    transition: all 0.15s ease;
+}
+
+.input--dash--product--details--information:focus {
+    border-color: #007185;
+    box-shadow: 0 0 0 3px rgba(0, 113, 133, 0.1);
+}
+
+.input--dash--product--details--information.error {
+    border-color: #C7511F;
+    box-shadow: 0 0 0 3px rgba(199, 81, 31, 0.1);
+}
+
+.name--product--input--details {
+    height: 2.5rem;
+}
+
+.input--product--input--category--details--information {
+    display: flex;
+    flex-direction: row;
+    gap: 1.93rem;
+}
+
+.select--category--details--information {
+    height: 1.93rem;
+    outline: none;
+    margin-top: 1rem;
+    color: #666;
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / 20%);
+    background-color: #f5f5f5;
+    margin-bottom: 2rem;
+}
+
+.label--name {
+    color: #666;
+    font-weight: bold;
+    display: flex;
+    margin-right: 0.3rem;
+}
+
+.detail--secction--product--description--details {
+    margin-bottom: 2rem;
+}
+
+.detail--secction--product--description--details h4 {
+    margin-bottom: 0.7rem;
+    padding: 0;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid #fff;
+    color: #666;
+    text-align: center;
+}
+
+.ck.ck-dropdown.ck-heading-dropdown, .ck.ck-dropdown.ck-toolbar__grouped-dropdown.ck-toolbar-dropdown,
+button.ck.ck-button.ck-disabled.ck-off, span.ck-file-dialog-button, .ck.ck-dropdown {
+    display: none;
+}
+
+.section--btn--button--upload--details {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.section--btn--button--upload--details button {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    outline: none;
+    background: #FFD814;
+    color: #0F1111;
+    border: 1px solid #FCD200;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    transition: all 0.15s ease;
+    min-height: 37px;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    line-height: 1.3;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.section--btn--button--upload--details button:hover {
+    background: #F7CA00;
+    border-color: #F2C200;
+    box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}
+
+.section--btn--button--upload--details button:focus {
+    box-shadow: 0 0 0 3px rgba(255, 216, 20, 0.25);
+    border-color: #008296;
+}
+
+.section--btn--button--upload--details button:disabled {
+    background: #D5D9D9;
+    color: #565959;
+    border-color: #D5D9D9;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.section--btn--button--upload--details button.loading {
+    color: transparent;
+}
+
+.section--btn--button--upload--details button.loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid #0F1111;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Error and Success Messages */
+.error--message {
+    color: #C7511F;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    display: block;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.success--message {
+    color: #007600;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 600;
+    padding: 0.75rem;
+    background: #F0F8E0;
+    border: 1px solid #007600;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.submit--error {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background: #FDF2F2;
+    border: 1px solid #C7511F;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+/* Category Select Improvements */
+.category--select--wrapper,
+.subcategory--select--wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.input--product--input--category--details--information {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.select--category--details--information {
+    width: 100%;
+    height: 2.5rem;
+    outline: none;
+    color: #0F1111;
+    background-color: #FFFFFF;
+    border: 1px solid #D5D9D9;
+    border-radius: 8px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    transition: all 0.15s ease;
+    cursor: pointer;
+}
+
+.select--category--details--information:focus {
+    border-color: #007185;
+    box-shadow: 0 0 0 3px rgba(0, 113, 133, 0.1);
+}
+
+.select--category--details--information.error {
+    border-color: #C7511F;
+    box-shadow: 0 0 0 3px rgba(199, 81, 31, 0.1);
+}
+
+/* Editor Wrapper */
+.editor--wrapper {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.editor--wrapper.error {
+    border: 1px solid #C7511F;
+    box-shadow: 0 0 0 3px rgba(199, 81, 31, 0.1);
+}
+
+/* Continue Upload Link */
+.btn--continue--upload {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #007185;
+    color: #FFFFFF;
+    border: 1px solid #007185;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 400;
+    transition: all 0.15s ease;
+    text-align: center;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    line-height: 1.3;
+}
+
+.btn--continue--upload:hover {
+    background: #005A6B;
+    border-color: #005A6B;
+    color: #FFFFFF;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}
+
+/* Form Focus Improvements */
+.input--dash--product--details--information:focus,
+.select--category--details--information:focus {
+    outline: none;
+    border-color: #007185;
+    box-shadow: 0 0 0 3px rgba(0, 113, 133, 0.1);
+}
+
+/* Responsive Improvements */
+@media (max-width: 768px) {
+    .input--product--details--information {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .label--upload--product--details--information {
+        width: 100%;
+        justify-content: flex-start;
+        padding-top: 0;
+    }
+
+    .input--upload--product--details--information {
+        width: 100%;
+    }
+}

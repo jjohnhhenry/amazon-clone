@@ -1,0 +1,141 @@
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+    background: #fff;
+}
+
+.row--main {
+    background-image: url(../img/become-seller.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.row--main--section {
+    display: flex;
+}
+
+.row--main--section--one{
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    color: #fff;
+    padding: 4rem;
+}
+
+.row--main--section--one h2 {
+    font-size: 3.75rem;
+    font-weight: bold;
+}
+
+.row--main--section--one h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: 1.5rem;
+}
+
+.row--main--section--two{
+    width: 45%;
+}
+
+.btn-btn--button {
+    width: 50%;
+    border: none;
+    border-radius: 2rem;
+    padding: 1rem 1.5rem;
+    font-size: 1.56rem;
+}
+
+.btn-main {
+    background: linear-gradient( 90deg, #FEC001, #FA990A);
+    margin-top: 3rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn-btn--button a{
+    text-decoration: none;
+}
+
+.row--main--section--one small {
+    margin-top: 0.5rem;
+}
+
+.row--second {
+    margin: 0 auto;
+    padding: 4rem;
+}
+
+.row--second--section {
+    display: flex;
+    gap: 5%;
+    justify-content: flex-start;
+}
+
+.row--second--column.one {
+    width: 20%;
+    color: #002F36;
+}
+
+.row--second--column.one h3{
+    padding-bottom: 1rem;
+    border: none;
+    border-bottom: 2px solid #002F36;
+}
+
+.row--second--column.two {
+    width: 15%;
+}
+
+.row--second--column.two img {
+    width: 100%;
+}
+
+.row--second--column.three {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.row--second--column.three h4{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #002F36;
+    margin-bottom: 1rem;
+}
+
+.btn-second {
+    margin-top: 1.5rem;
+    background: transparent;
+    border: 3px solid #00a4b4;
+    color: #00a4b4;
+    cursor: pointer;
+    outline: none;
+}
+
+
+@media (max-width: 669px) {
+    .row--main--section--one {
+        width: auto;
+    }
+
+    .row--main--section--two {
+        display: none;
+    }
+
+    .row--main--section--one h2 {
+        font-size: 3rem;
+    }
+
+    .btn-btn--button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-btn--button {
+        font-size: 1rem;
+    }
+} 

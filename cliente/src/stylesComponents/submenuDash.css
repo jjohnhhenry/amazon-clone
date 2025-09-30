@@ -1,0 +1,25 @@
+.section--menu--dashboard {
+    width: 20%;
+}
+
+.section--menu--dashboard ul {
+    padding: 0!important;
+    background: #131921;
+}
+
+.section--menu--dashboard ul li {
+    color: #fff;
+    list-style: none;
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.section--menu--dashboard ul li:hover {
+    background: #CD9042;
+}
+
+.section--menu--dashboard ul a {
+    text-decoration: none;
+    color: #fff;
+}

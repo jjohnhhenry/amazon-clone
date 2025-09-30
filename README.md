@@ -1,70 +1,331 @@
-# Getting Started with Create React App
+# 🛒 EcuAmazon - E-commerce Full Stack Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Un clon completo de Amazon desarrollado con tecnologías modernas. Sistema de comercio electrónico robusto que incluye gestión de usuarios, catálogo de productos, carrito de compras, procesamiento de pedidos y dashboard de vendedores.
 
-## Available Scripts
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=for-the-badge&logo=graphql&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![Apollo](https://img.shields.io/badge/Apollo%20GraphQL-311C87?style=for-the-badge&logo=apollo-graphql&logoColor=white)
 
-In the project directory, you can run:
+## 🏗️ Arquitectura del Sistema
 
-### `npm start`
+### Patrón: Cliente-Servidor con API GraphQL
+```
+┌─────────────────┐    GraphQL/HTTP    ┌─────────────────┐    Mongoose    ┌─────────────────┐
+│   React Client  │ ←─────────────────→ │  Apollo Server  │ ←────────────→ │    MongoDB      │
+│  (Frontend)     │                    │   (Backend)     │                │   (Database)    │
+└─────────────────┘                    └─────────────────┘                └─────────────────┘
+         │                                       │
+         │                                       │
+    ┌─────────┐                           ┌─────────────┐
+    │ Context │                           │  Resolvers  │
+    │  State  │                           │ Controllers │
+    └─────────┘                           └─────────────┘
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 🎯 Patrones de Diseño Implementados
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **MVC (Model-View-Controller)**: Separación clara de responsabilidades
+- **Repository Pattern**: Acceso a datos a través de Mongoose ODM
+- **Observer Pattern**: React Context para manejo de estado global
+- **Strategy Pattern**: Diferentes estrategias de autenticación (Cliente/Vendedor)
+- **Command Pattern**: Mutations de GraphQL como comandos encapsulados
 
-### `npm test`
+## 🚀 Características Principales
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 👥 Gestión de Usuarios
+- ✅ Registro y autenticación de clientes
+- ✅ Registro y autenticación de vendedores
+- ✅ Autenticación JWT con roles diferenciados
+- ✅ Dropdown de login con opciones Cliente/Vendedor
+- ✅ Auto-login después del registro
 
-### `npm run build`
+### 🛍️ Catálogo de Productos
+- ✅ CRUD completo de productos (vendedores)
+- ✅ Categorización de productos
+- ✅ Gestión de inventario automática
+- ✅ Upload de imágenes a AWS S3
+- ✅ Vista pública del catálogo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🛒 Carrito de Compras
+- ✅ Agregar productos al carrito
+- ✅ Modificar cantidades
+- ✅ Eliminar productos del carrito
+- ✅ Cálculo automático de totales
+- ✅ Persistencia del carrito en contexto
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 💳 Procesamiento de Pedidos
+- ✅ Checkout con auto-fill de datos del usuario
+- ✅ Creación y gestión de pedidos
+- ✅ Estados de pedidos (PENDIENTE → COMPLETADO → CANCELADO)
+- ✅ Historial de pedidos para clientes
+- ✅ Cola de pedidos para vendedores
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 📊 Dashboard de Vendedores
+- ✅ Métricas de ventas y revenue
+- ✅ Gestión de productos
+- ✅ Administración de pedidos
+- ✅ Analytics de rendimiento
+- ✅ Actividad reciente
 
-### `npm run eject`
+## 🛠️ Stack Tecnológico
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Frontend
+- **React 17**: Biblioteca de UI con hooks y context
+- **Apollo Client**: Cliente GraphQL con cache inteligente
+- **React Router DOM v5**: Navegación SPA
+- **Material-UI**: Componentes de interfaz de usuario
+- **CKEditor**: Editor de texto enriquecido
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Backend
+- **Apollo Server**: Servidor GraphQL
+- **Node.js**: Runtime de JavaScript
+- **Express**: Framework web (integrado con Apollo)
+- **JWT**: Autenticación basada en tokens
+- **bcryptjs**: Hashing seguro de contraseñas
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Base de Datos
+- **MongoDB**: Base de datos NoSQL
+- **Mongoose**: ODM para MongoDB con esquemas tipados
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Infraestructura
+- **AWS S3**: Almacenamiento de imágenes
+- **dotenv**: Gestión de variables de entorno
 
-## Learn More
+## 📁 Estructura del Proyecto
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+clon-amazon/
+├── cliente/                    # Frontend React
+│   ├── public/
+│   ├── src/
+│   │   ├── components/         # Componentes reutilizables
+│   │   │   ├── Header.js       # Navegación principal
+│   │   │   ├── Footer.js       # Pie de página
+│   │   │   └── layout/         # Componentes de layout
+│   │   ├── pages/              # Páginas principales
+│   │   │   ├── SignClient/     # Registro/Login clientes
+│   │   │   ├── SignSeller/     # Registro/Login vendedores
+│   │   │   ├── VendorDashboard.js  # Dashboard vendedores
+│   │   │   └── ...
+│   │   ├── context/            # Estado global
+│   │   │   └── Cart/           # Contexto del carrito
+│   │   ├── config/             # Configuración Apollo
+│   │   ├── helpers/            # Funciones utilitarias
+│   │   ├── hooks/              # Custom hooks
+│   │   └── stylesComponents/   # Estilos CSS
+│   └── package.json
+├── servidor/                   # Backend GraphQL
+│   ├── db/
+│   │   ├── schema.js           # Esquema GraphQL
+│   │   └── resolvers.js        # Resolvers GraphQL
+│   ├── Models/                 # Modelos Mongoose
+│   │   ├── UserClient.js       # Modelo de clientes
+│   │   ├── UserSeller.js       # Modelo de vendedores
+│   │   ├── Products.js         # Modelo de productos
+│   │   └── Orders.js           # Modelo de pedidos
+│   ├── controllers/            # Lógica de negocio
+│   ├── config/                 # Configuración BD
+│   ├── utils/                  # Utilidades AWS
+│   ├── variables.env           # Variables de entorno
+│   └── package.json
+├── ANALISIS_PROYECTO.md        # Análisis técnico
+├── CLAUDE.md                   # Instrucciones del proyecto
+└── README.md                   # Este archivo
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## ⚙️ Instalación y Configuración
 
-### Code Splitting
+### Prerrequisitos
+- Node.js v21.5.0 o superior
+- MongoDB instalado y ejecutándose
+- Cuenta de AWS con S3 configurado
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 1. Clonar el repositorio
+```bash
+git clone https://github.com/tu-usuario/ecuamazon.git
+cd ecuamazon
+```
 
-### Analyzing the Bundle Size
+### 2. Configurar el Backend
+```bash
+cd servidor
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Crear archivo de variables de entorno
+cp variables.env.example variables.env
+```
 
-### Making a Progressive Web App
+Editar `variables.env` con tus credenciales:
+```env
+DB_MONGO=mongodb://localhost:27017/ecuamazon
+TOKEN_SECRET=tu_secret_jwt_muy_seguro
+AWS_ID=tu_aws_access_key
+AWS_SECRET=tu_aws_secret_key
+AWS_BUCKET_NAME=tu-bucket-s3
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 3. Configurar el Frontend
+```bash
+cd ../cliente
+npm install
+```
 
-### Advanced Configuration
+### 4. Iniciar los servicios
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**Terminal 1 - Backend:**
+```bash
+cd servidor
+npm run dev
+```
 
-### Deployment
+**Terminal 2 - Frontend:**
+```bash
+cd cliente
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🌐 URLs de Acceso
 
-### `npm run build` fails to minify
+- **Frontend**: http://localhost:3000
+- **GraphQL Playground**: http://localhost:4000
+- **API GraphQL**: http://localhost:4000/graphql
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 📋 Funcionalidades por Rol
+
+### 👤 Cliente
+- Registro y login de cuenta
+- Navegación del catálogo de productos
+- Agregar productos al carrito
+- Checkout con auto-fill de datos
+- Historial de pedidos
+- Gestión de perfil
+
+### 🏪 Vendedor
+- Registro y login de cuenta de vendedor
+- Dashboard con métricas de ventas
+- CRUD de productos con imágenes
+- Gestión de inventario
+- Administración de pedidos
+- Analytics de rendimiento
+
+## 🔐 Autenticación y Seguridad
+
+- **JWT Tokens**: Autenticación stateless
+- **Bcrypt**: Hashing seguro de contraseñas
+- **Roles**: Separación Cliente/Vendedor
+- **Middleware**: Validación automática de tokens
+- **CORS**: Configurado para desarrollo
+
+## 📊 Base de Datos
+
+### Modelos Principales
+
+**UserClient**
+```javascript
+{
+  name: String,
+  surname: String,
+  email: String (unique),
+  password: String (hashed),
+  address: String,
+  province: String,
+  city: String,
+  phone: String
+}
+```
+
+**UserSeller**
+```javascript
+{
+  name: String,
+  surname: String,
+  email: String (unique),
+  password: String (hashed),
+  company: String
+}
+```
+
+**Product**
+```javascript
+{
+  name: String,
+  price: Float,
+  stock: Int,
+  description: String,
+  category: String,
+  seller: ObjectId (ref: UserSeller),
+  urls: [String], // AWS S3 URLs
+  status: String (draft/complete)
+}
+```
+
+**Order**
+```javascript
+{
+  order: [OrderItem],
+  total: Float,
+  client: ObjectId (ref: UserClient),
+  seller: ObjectId (ref: UserSeller),
+  state: OrderState (PENDIENTE/COMPLETADO/CANCELADO),
+  createdAt: Date
+}
+```
+
+## 🧪 Testing
+
+```bash
+# Frontend
+cd cliente
+npm test
+
+# Backend (si se implementan tests)
+cd servidor
+npm test
+```
+
+## 🚀 Deployment
+
+### Frontend (Netlify/Vercel)
+```bash
+cd cliente
+npm run build
+# Subir carpeta build/ a tu servicio de hosting
+```
+
+### Backend (Heroku/Railway)
+```bash
+cd servidor
+# Configurar variables de entorno en el servicio
+# Deployear según la plataforma elegida
+```
+
+## 🤝 Contribuir
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/nueva-funcionalidad`)
+3. Commit tus cambios (`git commit -m 'Agregar nueva funcionalidad'`)
+4. Push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto es para fines educativos. Ver `LICENSE` para más detalles.
+
+## 👨‍💻 Autor
+
+**Tu Nombre**
+- GitHub: [@tu-usuario](https://github.com/tu-usuario)
+- Email: tu.email@ejemplo.com
+
+## 🙏 Reconocimientos
+
+- Diseño inspirado en Amazon.com
+- Icons por Material-UI
+- Deployment tools: Netlify, Vercel, Heroku
+- Database: MongoDB Atlas
+
+---
+
+⭐ **¡Dale una estrella al proyecto si te ha sido útil!**

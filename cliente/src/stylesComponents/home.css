@@ -1,0 +1,44 @@
+
+.slider--row {
+    background: #fff;
+    margin: 0 1.25rem 1.25rem;
+    padding: 10px 25px;
+}
+
+.slider--row  h2 {
+    display: inline-block;
+}
+
+.slider--row span {
+    margin-left: 1rem;
+}
+
+.slider--row--area {
+    overflow-x: hidden;
+    max-width: 1200px;
+    margin-top: 1rem;
+}
+
+.slider--row--item {
+    transition: all 0.5s;
+    width: 9999px;
+}
+
+.btn-slider {
+    position: absolute;
+    width: 4%;
+    height: 6rem;
+    background: #ffffff40;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px #888;
+    margin-top: 3.5rem;
+    border: none;
+    cursor: pointer;
+}
+.arrow-left {
+    left: 3.5%;
+}
+
+.arrow-rigth {
+    right: 3.5%;
+}

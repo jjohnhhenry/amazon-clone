@@ -1,0 +1,224 @@
+/*{
+    background: #fff;
+}*/
+
+.section--accept--terms p {
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.section--help {
+    display: flex;
+    flex-direction: column;
+}
+
+.section--help-title {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.section--help .section--help-title span {
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.section--help .section--help--items span {
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+}
+.section--help--items {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.5rem;
+}
+
+.section--create--account {
+    width: 350px;
+    text-align: center;
+    position: relative;
+    top: 2px;
+    padding-top: 1px;
+    margin-bottom: 14px;
+    line-height: 0;
+}
+
+.section--create--account h5 {
+    line-height: 1;
+    font-size: 12px;
+    color: #767676;
+    font-weight: 400;
+    z-index: 2;
+    position: relative;
+    display: inline-block;
+    background-color: #fff;
+    padding: 0 8px 0 7px;
+}
+
+.section--create--account::after {
+    content: "";
+    width: 100%;
+    background-color: transparent;
+    display: block;
+    height: 1px;
+    border-top: 1px solid #e7e7e7;
+    position: absolute;
+    top: 50%;
+    margin-top: 1px;
+    z-index: 1;
+}
+
+.section--create--account--button {
+    width: 350px;
+}
+
+.section--create--account--button button {
+    width: 100%;
+    background: #e7e9ec;
+    border-radius: 3px;
+    border-color: #adb1b8 #a2a6ac #8d9096;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0;
+    text-align: center;
+    outline: none;
+    vertical-align: middle;
+    height: 29px;
+    font-size: 0.8rem;
+    color: #111;
+}
+
+
+.row--main--signup {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row--logo--signup {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 120px;
+    height: 60px;
+}
+
+.row--logo--signup img {
+    width: 100%;
+    height: 100%;
+}
+
+.row--main--form {
+    width: 350px;
+    margin-bottom: 1.3rem;
+}
+
+.form--group h3 {
+    font-size: 1.75rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.section--password {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.secction--form {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px 26px;
+}
+
+.label--name {
+    font-size: 0.81rem;
+    padding-left: 2px;
+    padding-bottom: 2px;
+}
+
+.input--sign {
+    width: 100%;
+    border: 1px solid #a6a6a6;
+    border-radius: 3px;
+    height: 1.93rem;
+    padding: 3px 7px;
+    margin-bottom: 0.87rem;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.input--sign:focus {
+    border-color:#e77600;
+    box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
+} 
+
+.section--password p {
+    color: #0066c0;
+    font-size: 0.81rem;
+    cursor: pointer;
+}
+
+.btn--button--signup {
+    width: 100%;
+    height: 1.93rem;
+    background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+    border: 0;
+    border-radius: 3px;
+    border: 1px solid;
+    border-color: #a88734 #9c7e31 #846a29;
+    margin-top: 1rem;
+    margin-bottom: 0.87rem;
+    color: #111;
+    cursor: pointer;
+    outline: none;
+}
+
+.row--messages--signup, .row--error--signup {
+    width: 350px;
+    display: flex;
+    border-radius: 4px;
+    box-shadow: 0 0 0 4px #fcf4f4 inset;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+}
+
+.row--error--signup {
+    border: 1px solid #c40000;
+}
+
+.row--messages--signup--icon, .row--error--signup--icon {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.row--message--signup--mesaage h4, .row--error--signup--message h4 {
+    color: #c40000;
+    font-size: 1rem;
+    line-height: 1.255;
+    font-weight: 400;
+}
+
+.row--error--signup--mesaage {
+    display: flex;
+    flex-direction: column;
+}
+
+.url--store {
+    margin: 0;
+}
+
+.secction--form--input--url--store {
+    margin-bottom: 0.87rem;
+}
+
+.secction--form--input--url--store p {
+    font-size: 0.72rem;
+    color: #666;
+}

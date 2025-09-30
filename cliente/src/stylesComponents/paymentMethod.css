@@ -1,0 +1,298 @@
+.section--options--payment--method {
+    margin: 2rem 4rem;
+}
+
+.box--save--payment--method {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box--info--contained {
+    padding: 0.9rem;
+    border: 1px solid #BBD3DE;
+    border-radius: 4px;
+}
+
+.box--info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.3rem 0.9rem;
+    border: 1px solid #BBD3DE;
+    border-radius: 4px;
+    background-color: #fafafa;
+}
+
+.box--text--text {
+    font-size: 0.90rem;
+}
+
+.section--payment--method--display {
+    margin: 2rem 4rem;
+}
+
+.section--payment--method--display h3 {
+    margin-bottom: 2rem;
+}
+
+.section--payment--method--display--items {
+    width: 62%;
+}
+
+.payment--method--items {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    margin-bottom: 1.5rem;
+}
+
+.section--text--payment--method {
+    display: flex;
+    flex-direction: column;
+}
+
+.bt--btn--save--info--target {
+    background: #d8dde6;
+    height: 31px;
+    border: 1px solid;
+    border-color: #bcc1c8 #bababa #adb2bb;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 1.8rem;
+}
+
+/* Credit Card Form Styles */
+.section--credit--card--form {
+    margin: 2rem 4rem;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 2rem;
+}
+
+.credit--card--header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+.credit--card--header h3 {
+    margin: 0;
+    color: #232F3E;
+}
+
+.credit--card--form {
+    max-width: 500px;
+}
+
+.form--group {
+    margin-bottom: 1.5rem;
+}
+
+.form--label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.form--input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.form--input:focus {
+    outline: none;
+    border-color: #FF9900;
+    box-shadow: 0 0 0 2px rgba(255, 153, 0, 0.2);
+}
+
+.form--row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form--group--half {
+    flex: 1;
+}
+
+.error--text {
+    color: #d32f2f;
+    font-size: 0.8rem;
+    margin-top: 0.3rem;
+    display: block;
+}
+
+.error--general {
+    background: #ffebee;
+    border: 1px solid #ffcdd2;
+    border-radius: 4px;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.security--notice {
+    display: flex;
+    align-items: center;
+    background: #f0f8ff;
+    border: 1px solid #e1f5fe;
+    border-radius: 4px;
+    padding: 0.75rem;
+    margin: 1.5rem 0;
+}
+
+.security--notice small {
+    color: #007600;
+    font-weight: 500;
+}
+
+.form--actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: flex-end;
+}
+
+.btn--cancel {
+    background: #f0f0f0;
+    border: 1px solid #a6a6a6;
+    border-radius: 3px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn--cancel:hover {
+    background: #e0e0e0;
+}
+
+.btn--process--payment {
+    background: #ff9900;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn--process--payment:hover:not(:disabled) {
+    background: #e68900;
+}
+
+.btn--process--payment:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Order Success Styles */
+.section--order--success {
+    margin: 2rem 4rem;
+    text-align: center;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 3rem 2rem;
+}
+
+.success--header h2 {
+    color: #007600;
+    margin-bottom: 1rem;
+}
+
+.success--header p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.order--details {
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+    text-align: left;
+}
+
+.order--details h3 {
+    color: #232F3E;
+    border-bottom: 2px solid #FF9900;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail--section {
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.detail--section h4 {
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.detail--section p {
+    margin: 0;
+    color: #666;
+    line-height: 1.5;
+}
+
+.success--actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn--continue--shopping, .btn--track--order {
+    padding: 0.75rem 2rem;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn--continue--shopping {
+    background: #ff9900;
+    color: white;
+    border: none;
+}
+
+.btn--continue--shopping:hover {
+    background: #e68900;
+}
+
+.btn--track--order {
+    background: #f0f0f0;
+    color: #333;
+    border: 1px solid #a6a6a6;
+}
+
+.btn--track--order:hover {
+    background: #e0e0e0;
+}

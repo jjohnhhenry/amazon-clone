@@ -1,0 +1,205 @@
+/* Amazon Upload Images - Product Images */
+/* .section--dashboard--seller styles moved to dashboard.css to avoid conflicts */
+
+.row--title--dashboard {
+    width: 100%;
+    margin: 1.5rem 0;
+    text-align: left;
+    padding: 0 2rem;
+    background: #FFFFFF;
+    border-bottom: 1px solid #D5D9D9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.07);
+}
+
+.row--title--dashboard h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #0F1111;
+    margin: 1.5rem 0;
+    font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+.section--panel--seller {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    background: #FFFFFF;
+    border: 1px solid #D5D9D9;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.13);
+}
+
+.section--form--upload--img {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.detail--dash--secction--product--img--upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.galery--img--product--title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.galery--img--product--images--upload {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    width: 100%;
+}
+
+.subtitulo--product--img--upload {
+    margin-bottom: 1rem;
+    padding: 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #D5D9D9;
+    color: #0F1111;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 700;
+    font-family: "Amazon Ember", Arial, sans-serif;
+}
+
+.margin--top {
+    margin-top: 2rem;
+}
+
+.section--btn--button--upload--product--img {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.section--btn--button--upload--product--img button {
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    outline: none;
+    background: #FFD814;
+    color: #0F1111;
+    border: 1px solid #FCD200;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    transition: all 0.15s ease;
+    min-height: 37px;
+    font-family: "Amazon Ember", Arial, sans-serif;
+    line-height: 1.3;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.section--btn--button--upload--product--img button:hover {
+    background: #F7CA00;
+    border-color: #F2C200;
+    box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+}
+
+.section--btn--button--upload--product--img button:focus {
+    box-shadow: 0 0 0 3px rgba(255, 216, 20, 0.25);
+    border-color: #008296;
+}
+
+.section--btn--button--upload--product--img button:disabled {
+    background: #D5D9D9;
+    color: #565959;
+    border-color: #D5D9D9;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.section--btn--button--upload--product--img button.loading {
+    color: transparent;
+}
+
+.section--btn--button--upload--product--img button.loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid #0F1111;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: button-loading-spinner 1s ease infinite;
+}
+
+@keyframes button-loading-spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Upload Messages */
+.error--message--upload,
+.success--message--upload {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    min-width: 250px;
+}
+
+.error--message--upload {
+    background: #FDF2F2;
+    color: #C7511F;
+    border: 1px solid #C7511F;
+}
+
+.success--message--upload {
+    background: #F0F8E0;
+    color: #007600;
+    border: 1px solid #007600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section--dashboard--seller {
+        margin: 0 1rem;
+        flex-direction: column;
+    }
+
+    .section--panel--seller {
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+    .galery--img--product--images--upload {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.75rem;
+    }
+
+    .section--btn--button--upload--product--img {
+        align-items: center;
+    }
+
+    .error--message--upload,
+    .success--message--upload {
+        min-width: auto;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .galery--img--product--images--upload {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 0.5rem;
+    }
+}

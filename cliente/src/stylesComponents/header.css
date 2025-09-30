@@ -1,0 +1,280 @@
+.header {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #131921;
+    position: sticky;
+    top:0;
+    z-index:100;
+}
+
+.section--logo {
+    margin: 0 20px;
+    margin-top: 18px;
+}
+
+.section--menu--icon {
+    display: none;
+}
+
+.header--logo {
+    width: 120px;
+    object-fit: contain;
+}
+
+.header--search {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    border-radius: 24px;
+}
+
+.search--input {
+    height: 12px;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.search--icon {
+    padding: 5px;
+    height: 22px !important;
+    background-color: #CD9042;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.nav--option-first {
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.nav--option-second {
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.header--nav {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.nav--option {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #fff;
+}
+
+.nav--cart {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+}
+
+.cart--count {
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+/* User Authentication Styles */
+.signIn {
+    position: relative;
+    cursor: pointer;
+}
+
+.user--dropdown--menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 250px;
+    z-index: 1000;
+    margin-top: 8px;
+}
+
+.user--dropdown--header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    color: #333;
+    border-bottom: 1px solid #eee;
+}
+
+.user--name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.user--email {
+    font-size: 12px;
+    color: #666;
+}
+
+.user--dropdown--divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 0;
+}
+
+.user--dropdown--item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    color: #333;
+    font-size: 14px;
+    transition: background-color 0.2s ease;
+}
+
+.user--dropdown--item:hover {
+    background-color: #f5f5f5;
+}
+
+.logout--btn {
+    color: #d32f2f;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.logout--btn:hover {
+    background-color: #ffebee;
+}
+
+/* Login Options Dropdown Styles */
+.login--options--menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    min-width: 280px;
+    z-index: 1000;
+    margin-top: 8px;
+}
+
+.login--options--header {
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.login--options--header h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.login--option--item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.login--option--item:hover {
+    background-color: #f5f5f5;
+    text-decoration: none;
+    color: #333;
+}
+
+.login--option--item:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.login--option--title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.login--option--subtitle {
+    font-size: 12px;
+    color: #666;
+}
+
+.login--options--divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 0;
+}
+
+@media (max-width: 669px) {
+    .header {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: normal;
+        background-color: #131921;
+        position: sticky;
+        top:0;
+        padding: 0 0 1rem 0;
+        z-index:100;
+    }
+
+    .section--menu--icon {
+        display: inline-block;
+        color: #fff;
+    }
+
+    .section--logo {
+        display: flex;
+        margin: 0 0.38rem;
+        margin-top: 10px;
+    }
+
+    .header--logo {
+        margin-left: 10px;
+    }
+
+    .header--search {
+        margin: 0 0.38rem;
+    }
+
+    .cart--icon--mobile {
+        position: fixed;
+        top: 10px;
+        right: 0.38rem;
+    }
+
+    .signIn {
+        position: fixed;
+        top: 10px;
+        right: 4rem;
+    }
+
+    .user--dropdown--menu {
+        right: -50px;
+        min-width: 220px;
+    }
+
+    .login--options--menu {
+        right: -50px;
+        min-width: 250px;
+    }
+
+    .mobile--hidden {
+        display: none;
+    }
+}

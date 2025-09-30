@@ -1,0 +1,44 @@
+
+.slider--historial--produtcs {
+    background: #fff;
+    padding: 3rem 0 2rem 0;
+}
+
+.slider--historial--produtcs hr {
+    border: none;
+    border-top: 1px solid #e7e7e7;
+    background-color: transparent;
+    height: 1px;
+    line-height: 19px;
+    margin-bottom: 1rem;
+}
+
+.slider--historial--title {
+    display: flex;
+    justify-content: center;
+}
+
+.slider--historial--button {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.button--button {
+    background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
+    border-color: #a88734 #9c7e31 #846a29;
+    color: #111;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px 12px;
+    color: #000;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.slider--historial--button button:hover {
+    background: #f4d078;
+}

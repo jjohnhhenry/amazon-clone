@@ -1,0 +1,20 @@
+*{
+    /*background: #fff;
+    margin: 0;
+    padding: 0;
+    color: #333*/
+}
+
+.section--checkout--general {
+    min-height: 100vh;
+    background: #fff;
+    padding: 0 20px;
+}
+
+.header--checkout {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px 24px;
+    padding-left: 4rem;
+    padding-right: 5rem;
+}
