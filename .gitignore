@@ -101,8 +101,12 @@ temp/
 ehthumbs.db
 Thumbs.db
 
-# AWS credentials (if accidentally placed in project)
+# AWS credentials and CLI files
 .aws/
+aws*/
+awscliv2.zip
+cliente/aws*/
+cliente/awscliv2.zip
 
 # MongoDB dumps
 dump/
