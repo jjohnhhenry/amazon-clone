@@ -144,8 +144,8 @@ clon-amazon/
 
 ### 1. Clonar el repositorio
 ```bash
-git clone https://github.com/tu-usuario/ecuamazon.git
-cd ecuamazon
+git clone https://github.com/jjohnhhenry/amazon-clone.git
+cd amazon-clone
 ```
 
 ### 2. Configurar el Backend
