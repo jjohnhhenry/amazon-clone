@@ -319,12 +319,21 @@ Este proyecto es para fines educativos. Ver `LICENSE` para más detalles.
 - GitHub: [@tu-usuario](https://github.com/tu-usuario)
 - Email: tu.email@ejemplo.com
 
+## 🤖 Herramientas de Desarrollo
+
+Este proyecto fue desarrollado utilizando herramientas modernas de desarrollo:
+- **Claude Code**: Asistencia de IA para pair programming y arquitectura
+- **GitHub Copilot**: Autocompletado inteligente de código
+- **Material-UI**: Biblioteca de componentes React
+- **Apollo DevTools**: Debugging de GraphQL
+
 ## 🙏 Reconocimientos
 
 - Diseño inspirado en Amazon.com
 - Icons por Material-UI
 - Deployment tools: Netlify, Vercel, Heroku
 - Database: MongoDB Atlas
+- AI assistance: Claude Code para desarrollo colaborativo
 
 ---
 
