@@ -5,6 +5,7 @@ import ExposureNeg1Icon from '@material-ui/icons/ExposureNeg1';
 import PlusOneIcon from '@material-ui/icons/PlusOne';
 
 import { useSatateCart } from '../../context/Cart/CartState';
+import { logAddToCart, logRemoveFromCart, logUpdateQuantity } from '../../helpers/cartHistory';
 
 export const ProductCart = ({product}) => {
 
@@ -45,13 +46,20 @@ export const ProductCart = ({product}) => {
 
     const handleClickQuitProduct = id => {
         console.log(typeof id);
+        const currentQuantity = product.quantity || 1;
         dispatch({
             type: "QUIT_PRODUCT",
             payload: {
                 id,
                 status: false
             }
-        })
+        });
+        // Registrar actualización de cantidad
+        if (currentQuantity > 1) {
+            logUpdateQuantity(product, currentQuantity - 1, currentQuantity);
+        } else {
+            logRemoveFromCart(product);
+        }
     }
 
     const handleDeleteProducts = id => {
@@ -61,14 +69,19 @@ export const ProductCart = ({product}) => {
                 id,
                 status: true
             }
-        })
+        });
+        // Registrar eliminación del carrito
+        logRemoveFromCart(product);
     }
 
     const handleClickAddProduct = () => { //Add product in cart
+        const currentQuantity = product.quantity || 1;
         dispatch({
             type: "ADD_CART",
             payload: product
-        })
+        });
+        // Registrar aumento de cantidad
+        logUpdateQuantity(product, currentQuantity + 1, currentQuantity);
     }
 
     return (

@@ -15,6 +15,8 @@ const RegisterClient = lazy(() => import("./SignClient/RegisterClient"));
 const AuthClient = lazy(() => import("./AuthClient"));
 const Checkout = lazy(() => import("./checkout/Checkout"));
 const Orders = lazy(() => import("./Orders"));
+const History = lazy(() => import("./History"));
+const Category = lazy(() => import("./Category"));
 
 
 
@@ -33,6 +35,8 @@ export default {
     RegisterClient,
     AuthClient,
     Checkout,
-    Orders
+    Orders,
+    History,
+    Category
 }
 

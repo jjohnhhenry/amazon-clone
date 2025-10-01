@@ -93,29 +93,38 @@ export default function Orders() {
 
     if (!user) {
         return (
-            <div className="orders--loading">
-                <p>Por favor inicia sesión para ver tus pedidos.</p>
-            </div>
+            <>
+                <Header />
+                <div className="orders--loading">
+                    <p>Por favor inicia sesión para ver tus pedidos.</p>
+                </div>
+            </>
         );
     }
 
     if (loading) return (
-        <div className="orders--loading">
-            <div className="loading--spinner"></div>
-            <p>Cargando tus pedidos...</p>
-        </div>
+        <>
+            <Header />
+            <div className="orders--loading">
+                <div className="loading--spinner"></div>
+                <p>Cargando tus pedidos...</p>
+            </div>
+        </>
     );
 
     if (error) {
         console.error('GraphQL Error:', error);
         return (
-            <div className="orders--error">
-                <h3>No se pudieron cargar tus pedidos</h3>
-                <p>Esto puede ser porque aún no has realizado ninguna compra.</p>
-                <button onClick={() => window.location.href = '/'} className="btn--continue--shopping">
-                    Continuar comprando
-                </button>
-            </div>
+            <>
+                <Header />
+                <div className="orders--error">
+                    <h3>No se pudieron cargar tus pedidos</h3>
+                    <p>Esto puede ser porque aún no has realizado ninguna compra.</p>
+                    <button onClick={() => window.location.href = '/'} className="btn--continue--shopping">
+                        Continuar comprando
+                    </button>
+                </div>
+            </>
         );
     }
 

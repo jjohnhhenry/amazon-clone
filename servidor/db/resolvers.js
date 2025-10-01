@@ -5,6 +5,7 @@ const bcryptjs = require("bcryptjs");
 require("dotenv").config({ path:"variables.env" });
 const jsonwebtoken = require("jsonwebtoken");
 const Orders = require("../Models/Orders");
+const CartHistory = require("../Models/CartHistory");
 const awsUploadImage = require("../utils/aws-upload-img");
 const awsQueryImg = require("../utils/aws-query-img");
 
@@ -81,6 +82,21 @@ const resolvers = {
                 console.log(error);
             }
         },
+        getProductsByCategory: async (_, { category }) => {
+            try {
+                const products = await Products.find({
+                    category: category,
+                    $or: [
+                        { status: 'complete' },
+                        { urls: { $exists: true, $ne: [], $not: { $size: 0 } } }
+                    ]
+                });
+                return products;
+            } catch (error) {
+                console.log(error);
+                throw new Error("Error al obtener productos por categoría");
+            }
+        },
         getProductBySeller: async (_, {id}, ctx) => {
             //check if product exist
             const product = await Products.findById(id);
@@ -120,6 +136,26 @@ const resolvers = {
             } catch (error) {
                 console.log('Error in getClientOrders:', error);
                 throw new Error('Failed to fetch orders');
+            }
+        },
+        getCartHistory: async (_, {}, ctx) => {
+            console.log('getCartHistory called, context:', ctx);
+
+            if (!ctx || !ctx.userClient) {
+                console.log('No user client in context');
+                throw new Error('Authentication required');
+            }
+
+            try {
+                console.log('Searching cart history for client:', ctx.userClient.id);
+                const history = await CartHistory.find({client: ctx.userClient.id.toString()})
+                    .populate('product')
+                    .sort({ timestamp: -1 }); // Más reciente primero
+                console.log('Found history entries:', history.length);
+                return history;
+            } catch (error) {
+                console.log('Error in getCartHistory:', error);
+                throw new Error('Failed to fetch cart history');
             }
         }
     },
@@ -349,6 +385,41 @@ const resolvers = {
 
             } catch (error) {
                 console.log('Error updating order status:', error);
+                throw error;
+            }
+        },
+        logCartAction: async (_, {input}, ctx) => {
+            try {
+                console.log('logCartAction called, input:', input);
+
+                // Check if client is authenticated
+                if (!ctx || !ctx.userClient) {
+                    throw new Error("Debe Iniciar Sesión");
+                }
+
+                // Create cart history entry
+                const historyEntry = new CartHistory({
+                    client: ctx.userClient.id,
+                    action: input.action,
+                    product: input.productId || null,
+                    productName: input.productName || '',
+                    quantity: input.quantity || 0,
+                    previousQuantity: input.previousQuantity || 0,
+                    price: input.price || '',
+                    details: input.details || '',
+                    timestamp: new Date()
+                });
+
+                await historyEntry.save();
+
+                // Populate product data if exists
+                await historyEntry.populate('product');
+
+                console.log('Cart action logged successfully:', historyEntry.id);
+                return historyEntry;
+
+            } catch (error) {
+                console.log('Error logging cart action:', error);
                 throw error;
             }
         }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useMutation, gql } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
 import { Header } from '../components/Header';
+import { CATEGORIES } from '../constants/categories';
 import '../stylesComponents/addNewProduct.css';
 
 const NEW_PRODUCT = gql`
@@ -33,19 +34,6 @@ const AddNewProduct = () => {
     });
 
     const [errors, setErrors] = useState({});
-
-    const categories = [
-        'Electrónicos',
-        'Ropa y Accesorios',
-        'Hogar y Jardín',
-        'Deportes y Aire Libre',
-        'Libros',
-        'Salud y Belleza',
-        'Automotriz',
-        'Juguetes y Juegos',
-        'Alimentos y Bebidas',
-        'Otros'
-    ];
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -175,9 +163,9 @@ const AddNewProduct = () => {
                                 className={errors.category ? 'error' : ''}
                             >
                                 <option value="">Selecciona una categoría</option>
-                                {categories.map(category => (
-                                    <option key={category} value={category}>
-                                        {category}
+                                {CATEGORIES.map(category => (
+                                    <option key={category.value} value={category.value}>
+                                        {category.label}
                                     </option>
                                 ))}
                             </select>

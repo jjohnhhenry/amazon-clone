@@ -66,8 +66,8 @@ const routes = [
         isLogin: false
     },
     {
-        path: "/:category/:productId",
-        component: pages.Product,
+        path: "/category/:categoryName",
+        component: pages.Category,
         exact: true,
         isPrivate: false,
         isLogin: false
@@ -110,6 +110,20 @@ const routes = [
     {
         path: "/orders",
         component: pages.Orders,
+        exact: true,
+        isPrivate: false,
+        isLogin: false
+    },
+    {
+        path: "/history",
+        component: pages.History,
+        exact: true,
+        isPrivate: false,
+        isLogin: false
+    },
+    {
+        path: "/:category/:productId",
+        component: pages.Product,
         exact: true,
         isPrivate: false,
         isLogin: false

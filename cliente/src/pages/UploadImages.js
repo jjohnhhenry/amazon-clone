@@ -160,7 +160,11 @@ const UploadImages = () => {
 
             if (response.ok) {
                 alert('Imágenes subidas exitosamente');
-                history.push('/vendor-dashboard');
+                // Redirect with state to trigger refetch
+                history.push({
+                    pathname: '/vendor-dashboard',
+                    state: { refetch: true }
+                });
             } else {
                 throw new Error(result.error || 'Error al subir imágenes');
             }

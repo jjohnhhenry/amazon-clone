@@ -5,6 +5,13 @@
     padding: 25px 20px;
     margin: 0 10px 20px 10px;
     background: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category--main--item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .category--main--title {
@@ -28,6 +35,13 @@
 
 .category--main--link {
     margin-top: 1rem;
+    color: #007185;
+    font-size: 13px;
+}
+
+.category--main--link:hover {
+    color: #C7511F;
+    text-decoration: underline;
 }
 
 @media (min-width: 857px) and (max-width: 947px) {

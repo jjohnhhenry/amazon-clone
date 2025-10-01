@@ -187,10 +187,10 @@ export const Header = () => {
                     <span className="nav--option-second">& Orders</span>
                 </Link>
 
-                <div className="nav--option mobile--hidden">
+                <Link to="/history" className="nav--option mobile--hidden" style={{ color: 'white', textDecoration: 'none' }}>
                     <span className="nav--option-first">Your</span>
-                    <span className="nav--option-second">Prime</span>
-                </div>
+                    <span className="nav--option-second">History</span>
+                </Link>
 
                 <Link to="/cart" className="cart--icon--mobile">
                     <div className="nav--cart">

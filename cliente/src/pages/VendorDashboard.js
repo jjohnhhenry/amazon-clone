@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation, gql } from '@apollo/client';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Header } from '../components/Header';
 import '../stylesComponents/vendorDashboard.css';
 
@@ -58,6 +58,7 @@ const UPDATE_ORDER_STATUS = gql`
 
 const VendorDashboard = () => {
     const history = useHistory();
+    const location = useLocation();
     const [activeTab, setActiveTab] = useState('products');
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [deleteProductMutation] = useMutation(DELETE_PRODUCT);
@@ -78,6 +79,15 @@ const VendorDashboard = () => {
             history.push('/login-seller');
         }
     }, [history]);
+
+    useEffect(() => {
+        // Refetch when coming back from upload images
+        if (location.state?.refetch) {
+            refetch();
+            // Clear the state to avoid refetching on every render
+            history.replace({ ...location, state: {} });
+        }
+    }, [location, refetch, history]);
 
     const handleUpdateOrderStatus = async (orderId, newStatus) => {
         try {

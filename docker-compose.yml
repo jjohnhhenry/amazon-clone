@@ -13,7 +13,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: password123
       MONGO_INITDB_DATABASE: ecuamazon
     volumes:
-      - mongodb_data:/data/db
+      - clon-amazon_mongodb_dev_data:/data/db
       - ./mongo-init:/docker-entrypoint-initdb.d
     networks:
       - ecuamazon-network
@@ -27,13 +27,11 @@ services:
     restart: unless-stopped
     ports:
       - "4000:4000"
+    env_file:
+      - ./servidor/variables.env
     environment:
       - NODE_ENV=production
       - DB_MONGO=mongodb://admin:password123@mongodb:27017/ecuamazon?authSource=admin
-      - TOKEN_SECRET=your_jwt_secret_here_change_in_production
-      - AWS_ID=${AWS_ID}
-      - AWS_SECRET=${AWS_SECRET}
-      - AWS_BUCKET_NAME=${AWS_BUCKET_NAME}
       - PORT=4000
     depends_on:
       - mongodb
@@ -66,27 +64,26 @@ services:
     command: npm start
 
   # Nginx Reverse Proxy (Production)
-  nginx:
-    image: nginx:alpine
-    container_name: ecuamazon-nginx
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - ./nginx/ssl:/etc/nginx/ssl
-    depends_on:
-      - client
-      - server
-    networks:
-      - ecuamazon-network
-    profiles:
-      - production
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: ecuamazon-nginx
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+  #     - ./nginx/ssl:/etc/nginx/ssl
+  #   depends_on:
+  #     - client
+  #     - server
+  #   networks:
+  #     - ecuamazon-network
 
 networks:
   ecuamazon-network:
     driver: bridge
 
 volumes:
-  mongodb_data:
+  clon-amazon_mongodb_dev_data:
+    external: true

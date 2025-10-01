@@ -65,6 +65,37 @@ const typeDefs = gql`
         quantity: Int
     }
 
+    type CartHistory {
+        id: ID
+        client: ID
+        action: CartAction!
+        product: Product
+        productName: String
+        quantity: Int
+        previousQuantity: Int
+        price: String
+        details: String
+        timestamp: String
+    }
+
+    enum CartAction {
+        ADD_TO_CART
+        REMOVE_FROM_CART
+        UPDATE_QUANTITY
+        CLEAR_CART
+        CHECKOUT
+    }
+
+    input CartHistoryInput {
+        productId: ID
+        productName: String
+        action: CartAction!
+        quantity: Int
+        previousQuantity: Int
+        price: String
+        details: String
+    }
+
     input UserSellerInput {
         name: String!
         surname: String!
@@ -128,9 +159,12 @@ const typeDefs = gql`
         getProduct(id: ID!) : Product
         getProductsBySeller : [Product]
         getProductBySeller(id: ID!) : Product
+        getProductsByCategory(category: String!) : [Product]
 
         getOrders : [Order]
         getClientOrders : [Order]
+
+        getCartHistory : [CartHistory]
     }
 
     type Mutation {
@@ -152,6 +186,9 @@ const typeDefs = gql`
         newOrder(input: OrderInput) : Order
         updateOrder(id: ID!, input: OrderInput ): Order
         updateOrderStatus(id: ID!, state: OrderState!) : Order
+
+        #Cart History
+        logCartAction(input: CartHistoryInput!) : CartHistory
     }
 `;
 

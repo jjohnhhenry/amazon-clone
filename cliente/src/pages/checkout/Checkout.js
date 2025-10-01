@@ -9,6 +9,7 @@ import PaymentMethod from '../../components/layout/PaymentMethod';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { useSatateCart } from '../../context/Cart/CartState';
 import { quantityProduct } from '../../context/Cart/cartReducer';
+import { logCheckout, logClearCart } from '../../helpers/cartHistory';
 
 const CREATE_ORDER = gql`
     mutation newOrder($input: OrderInput!) {
@@ -76,10 +77,16 @@ export default function Checkout() {
 
             setOrderResult(data.newOrder);
 
+            // Registrar el checkout en el historial
+            logCheckout(total.toFixed(2), cartWithQuantity.length);
+
             // Limpiar el carrito
             dispatch({
                 type: "CLEAR_CART"
             });
+
+            // Registrar limpieza del carrito
+            logClearCart(cartWithQuantity.length);
 
             console.log('Order created successfully:', data.newOrder);
         } catch (error) {

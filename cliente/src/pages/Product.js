@@ -28,6 +28,7 @@ import { ProductSelectColors } from '../components/layout/ProductSelectColors';
 import { useSatateCart } from '../context/Cart/CartState';
 import { quantityProduct } from '../context/Cart/cartReducer';
 import Rewies from '../components/layout/Rewies';
+import { logAddToCart, logRemoveFromCart } from '../helpers/cartHistory';
 
 
 
@@ -57,11 +58,11 @@ function Product ({location}) {
 
 
     const [imgMain, setImgMain] = useState({
-        img: infoProduct.urls && infoProduct.urls.length > 0 ? infoProduct.urls[0].urlsProduct : '',
+        img: infoProduct?.urls && infoProduct.urls.length > 0 ? infoProduct.urls[0].urlsProduct : '',
         color:""
     });
 
-    const quantityP = itemsForCart && itemsForCart.filter(elem => elem.id ===  infoProduct.id)
+    const quantityP = itemsForCart && itemsForCart.filter(elem => elem.id === infoProduct?.id)
 
     console.log(quantityP)
 
@@ -69,7 +70,9 @@ function Product ({location}) {
         dispatch({
             type: "ADD_CART",
             payload: infoProduct
-        })
+        });
+        // Registrar en el historial
+        logAddToCart(infoProduct, 1);
     }
 
     const handleClickQuitProduct = id => {
@@ -79,7 +82,9 @@ function Product ({location}) {
                 id,
                 status: false
             }
-        })
+        });
+        // Registrar en el historial
+        logRemoveFromCart(infoProduct);
     }
 
 
@@ -90,6 +95,35 @@ function Product ({location}) {
         });
     }
 
+    // Guard clause: if no product data, show error
+    if (!infoProduct) {
+        return (
+            <div>
+                <Header />
+                <SubMenu />
+                <div className="section--product">
+                    <div style={{ padding: '40px', textAlign: 'center' }}>
+                        <h2>Producto no encontrado</h2>
+                        <p>Lo sentimos, no pudimos encontrar la información de este producto.</p>
+                        <button
+                            onClick={() => window.location.href = '/'}
+                            style={{
+                                marginTop: '20px',
+                                padding: '10px 20px',
+                                background: '#FFD814',
+                                border: 'none',
+                                borderRadius: '8px',
+                                cursor: 'pointer'
+                            }}
+                        >
+                            Volver al inicio
+                        </button>
+                    </div>
+                </div>
+                <Footer />
+            </div>
+        );
+    }
 
     return (
         <div>

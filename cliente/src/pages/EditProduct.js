@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useQuery, useMutation, gql } from '@apollo/client';
 import { Header } from '../components/Header';
+import { CATEGORIES } from '../constants/categories';
 import '../stylesComponents/editProduct.css';
 
 const GET_PRODUCT_BY_SELLER = gql`
@@ -64,19 +65,6 @@ const EditProduct = () => {
 
     const [errors, setErrors] = useState({});
     const [hasChanges, setHasChanges] = useState(false);
-
-    const categories = [
-        'Electrónicos',
-        'Ropa y Accesorios',
-        'Hogar y Jardín',
-        'Deportes y Aire Libre',
-        'Libros',
-        'Salud y Belleza',
-        'Automotriz',
-        'Juguetes y Juegos',
-        'Alimentos y Bebidas',
-        'Otros'
-    ];
 
     useEffect(() => {
         // Check if user is authenticated
@@ -277,9 +265,9 @@ const EditProduct = () => {
                                 className={errors.category ? 'error' : ''}
                             >
                                 <option value="">Selecciona una categoría</option>
-                                {categories.map(category => (
-                                    <option key={category} value={category}>
-                                        {category}
+                                {CATEGORIES.map(category => (
+                                    <option key={category.value} value={category.value}>
+                                        {category.label}
                                     </option>
                                 ))}
                             </select>
