@@ -1,7 +1,7 @@
-version: '3.8'
+version: '3.3'
 
 services:
-  # MongoDB Database (same as production)
+  # MongoDB Database (containerized for development)
   mongodb:
     image: mongo:6.0
     container_name: ecuamazon-mongodb-dev
@@ -35,8 +35,6 @@ services:
       - AWS_SECRET=${AWS_SECRET:-your_aws_secret}
       - AWS_BUCKET_NAME=${AWS_BUCKET_NAME:-your_bucket}
       - PORT=4000
-    depends_on:
-      - mongodb
     volumes:
       - ./servidor:/app
       - /app/node_modules
@@ -57,8 +55,17 @@ services:
       - REACT_APP_GRAPHQL_URI=http://localhost:4000/graphql
       - CHOKIDAR_USEPOLLING=true
       - FAST_REFRESH=false
+      - BROWSER=none
+      - ESLINT_NO_DEV_ERRORS=true
+      - DISABLE_ESLINT_PLUGIN=true
+      - SKIP_PREFLIGHT_CHECK=true
+      - GENERATE_SOURCEMAP=false
+      - WDS_SOCKET_HOST=localhost
+      - WDS_SOCKET_PORT=3000
+      - ESLINT=0
     depends_on:
       - server
+      - mongodb
     volumes:
       - ./cliente:/app
       - /app/node_modules
